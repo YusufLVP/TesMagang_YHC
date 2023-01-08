@@ -13,14 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('mahasiswas', function (Blueprint $table) {
+        Schema::create('prodis', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->unsignedBigInteger('prodi_id')->default(1);
-            $table->foreign('prodi_id')->references('id')->on('prodis')->onDelete('RESTRICT')->onUpdate('CASCADE');
-            $table->string('kelas');
-            $table->integer('semester');
-            $table->string('tahun_angkatan');
+            $table->string('nama_prodi');
+            $table->text('deskripsi')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });
@@ -33,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mahasiswas');
+        Schema::dropIfExists('prodis');
     }
 };
